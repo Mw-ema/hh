@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little World for Kyler 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Pacifico&display=swap');
+
+:root {
+  --pink: #ff6fae;
+  --dark: #6d3152;
+  --light: #fff0f6;
+  --white: #fffafd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #fff5f8;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+header {
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,.8);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ffe1ed;
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  color: #ef5799;
+  font-size: 22px;
+}
+
+.music {
+  background: #ffe0ed;
+  color: #c23d7b;
+  border-radius: 30px;
+  padding: 11px 17px;
+  font-weight: bold;
+}
+
+.hero {
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  position: relative;
+  background: radial-gradient(circle at top, #ffe0ed, #fff5f8 65%);
+}
+
+.hero-content {
+  max-width: 650px;
+  animation: appear 1s ease;
+}
+
+.eyebrow {
+  background: white;
+  display: inline-block;
+  padding: 9px 17px;
+  border-radius: 30px;
+  color: #e65b99;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #e95196;
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1.2;
+}
+
+.hero p {
+  margin: 22px auto;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #87536d;
+}
+
+.primary, .secondary {
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 7px;
+  transition: .25s;
+}
+
+.primary {
+  color: white;
+  background: linear-gradient(135deg,#ff6fae,#eb438c);
+  box-shadow: 0 7px 20px #f6a5c8;
+}
+
+.secondary {
+  color: #d74e8d;
+  background: white;
+}
+
+.primary:hover, .secondary:hover {
+  transform: translateY(-4px);
+}
+
+.heart {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUp 6s linear forwards;
+  opacity: .65;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .8; }
+  to { transform: translateY(-100vh) rotate(35deg); opacity: 0; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  padding: 75px 7%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.section-heading h2 {
+  font-family: 'Pacifico', cursive;
+  color: #e95196;
+  font-size: clamp(27px,5vw,39px);
+}
+
+.section-heading p {
+  color: #98647d;
+  margin-top: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 22px;
+  max-width: 1050px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ffe0eb;
+  border-radius: 22px;
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(225,111,160,.07);
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(225,111,160,.16);
+}
+
+.card .emoji {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #d84d8c;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #93677d;
+  margin-bottom: 17px;
+}
+
+.small-btn {
+  background: #ffe5ef;
+  color: #c73d7c;
+  border-radius: 20px;
+  padding: 11px 17px;
+  font-weight: bold;
+}
+
+.game-area {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  border-radius: 25px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #ffdfeb;
+}
+
+#game {
+  height: 270px;
+  background: #fff0f6;
+  border-radius: 18px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.game-heart {
+  position: absolute;
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+  animation: appear .2s ease;
+}
+
+.score {
+  font-weight: bold;
+  color: #e95196;
+  margin-top: 15px;
+}
+
+.quiz {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ffdfeb;
+}
+
+#question {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-options button {
+  padding: 14px;
+  border-radius: 15px;
+  background: #fff0f6;
+  color: #9e426e;
+  font-weight: bold;
+}
+
+.quiz-options button:hover {
+  background: #ffd7e8;
+}
+
+#quiz-result {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #e95196;
+}
+
+.letter-section {
+  background: #fff0f6;
+  text-align: center;
+}
+
+.envelope {
+  background: white;
+  width: min(280px,85%);
+  margin: 30px auto;
+  padding: 35px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px #edbbd1;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.envelope:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.envelope .emoji {
+  font-size: 70px;
+}
+
+.envelope p {
+  margin-top: 12px;
+  color: #d34c8b;
+  font-weight: bold;
+}
+
+.letter {
+  display: none;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 25px auto;
+  line-height: 2;
+  color: #87536d;
+  text-align: left;
+  animation: appear .5s ease;
+}
+
+.letter h3 {
+  font-family: 'Pacifico', cursive;
+  color: #e95196;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.hidden-box {
+  background: white;
+  border-radius: 20px;
+  padding: 23px;
+  text-align: center;
+  border: 1px dashed #ff8cba;
+  max-width: 650px;
+  margin: auto;
+}
+
+#secret {
+  min-height: 45px;
+  margin-top: 18px;
+  color: #e95196;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+footer {
+  background: #ffe4ef;
+  text-align: center;
+  padding: 35px 15px;
+  color: #a74d77;
+  line-height: 2;
+}
+
+footer strong {
+  color: #e95196;
+}
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #d94c8d;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 30px;
+  z-index: 100;
+  transition: .4s;
+  text-align: center;
+  width: max-content;
+  max-width: 90%;
+  box-shadow: 0 5px 20px #e9a6c5;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+@media(max-width:600px) {
+  header { padding: 15px 5%; }
+  .logo { font-size: 18px; }
+  .music { padding: 9px 12px; font-size: 12px; }
+  section { padding: 55px 5%; }
+  .hero { min-height: 75vh; }
+  .hero p { font-size: 15px; }
+  .quiz { padding: 23px 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">For Kyler 💗</div>
+  <button class="music" onclick="toggleMusic()" id="musicBtn">
+    🎵 Play music
+  </button>
+</header>
+
+<!-- WELCOME -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">A VERY IMPORTANT WEBSITE ✨</div>
+    <h1>Hey Kyler! 💕</h1>
+    <p>
+      I made you a little corner of the internet.
+      No boring stuff allowed here.
+      Just smiles, love, a little chaos and someone
+      who thinks you're pretty amazing. 🥹
+    </p>
+    <button class="primary" onclick="scrollToSection('surprises')">
+      Enter our little world 💗
+    </button>
+    <button class="secondary" onclick="showToast('Too late! You are already loved. 😂❤️')">
+      I'm just here for the vibes
+    </button>
+  </div>
+</div>
+
+<!-- SURPRISES -->
+<section id="surprises">
+  <div class="section-heading">
+    <h2>Your little happiness menu 🌷</h2>
+    <p>Pick your adventure, princess.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">💌</div>
+      <h3>A little love letter</h3>
+      <p>There's something I want you to read. No cheating!</p>
+      <button class="small-btn" onclick="scrollToSection('letter')">Open it</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🧠</div>
+      <h3>Couple quiz</h3>
+      <p>Let's see how well you know this handsome person.</p>
+      <button class="small-btn" onclick="scrollToSection('quiz-section')">Challenge me</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🔐</div>
+      <h3>Secret messages</h3>
+      <p>Some things are hidden. But not for long.</p>
+      <button class="small-btn" onclick="scrollToSection('secrets')">Find secrets</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎮</div>
+      <h3>Heart catcher</h3>
+      <p>Catch as many hearts as you can. Don't disappoint me 😂</p>
+      <button class="small-btn" onclick="scrollToSection('game-section')">Let's play</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOVE LETTER -->
+<section class="letter-section" id="letter">
+  <div class="section-heading">
+    <h2>A letter for you 💌</h2>
+    <p>Something sweet is waiting inside.</p>
+  </div>
+
+  <div class="envelope" onclick="openLetter()">
+    <div class="emoji">💌</div>
+    <p>To: My favourite human</p>
+    <p>Tap to open ♡</p>
+  </div>
+
+  <div class="letter" id="loveLetter">
+    <h3>Dear Kyler ❤️</h3>
+    <p>
+      I don't think you realise how special you are.
+      Sometimes I just catch myself smiling because
+      of you, and honestly, it's getting ridiculous. 😂
+    </p>
+    <p>
+      I love the little things about you, the random
+      moments, the laughs and even the times you make
+      me shake my head.
+    </p>
+    <p>
+      I might not always have the perfect words,
+      but I hope you never doubt that you are
+      appreciated, admired and cared for.
+    </p>
+    <p>
+      So here's your reminder:
+      you're beautiful, you're special, and
+      you're stuck with my silly self. 😂💕
+    </p>
+    <p style="text-align:right">
+      With love,<br>
+      Your favourite troublemaker ❤️
+    </p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz-section">
+  <div class="section-heading">
+    <h2>How well do you know me? 😂</h2>
+    <p>Let's test those girlfriend skills.</p>
+  </div>
+
+  <div class="quiz">
+    <p id="question-number">Question 1 of 5</p>
+    <div id="question">Ready to play?</div>
+    <div class="quiz-options" id="options">
+      <button onclick="startQuiz()">Start the quiz 💗</button>
+    </div>
+    <div id="quiz-result"></div>
+  </div>
+</section>
+
+<!-- SECRET MESSAGES -->
+<section id="secrets">
+  <div class="section-heading">
+    <h2>Classified information 🔐</h2>
+    <p>Only for Kyler. Don't tell the government.</p>
+  </div>
+
+  <div class="hidden-box">
+    <p>Tap the button to uncover a secret message.</p>
+    <div id="secret">🤫 Something is hiding here...</div>
+    <button class="primary" onclick="revealSecret()">
+      Reveal a secret 💕
+    </button>
+  </div>
+</section>
+
+<!-- FUNNY BUTTONS -->
+<section style="background:#fff0f6">
+  <div class="section-heading">
+    <h2>Important girlfriend business 😂</h2>
+    <p>These buttons are legally binding. Probably.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🥺</div>
+      <h3>Do you miss me?</h3>
+      <button class="small-btn" onclick="showToast('I KNEW IT! I miss you too. 😭❤️')">
+        Yes, obviously
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">👑</div>
+      <h3>Who is the princess?</h3>
+      <button class="small-btn" onclick="showToast('Correct! The crown belongs to Kyler. 👑💕')">
+        ME, obviously!
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🍫</div>
+      <h3>Choose your reward</h3>
+      <button class="small-btn" onclick="showToast('One hug, unlimited kisses and maybe chocolate. 😂💗')">
+        Claim my reward
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">😈</div>
+      <h3>Are you troublesome?</h3>
+      <button class="small-btn" onclick="showToast('Your innocence has been rejected. Case closed. 😂')">
+        I'm innocent!
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MINI GAME -->
+<section id="game-section">
+  <div class="section-heading">
+    <h2>Catch the love! 💗</h2>
+    <p>Catch as many hearts as possible in 20 seconds.</p>
+  </div>
+
+  <div class="game-area">
+    <h3>Heart catcher challenge</h3>
+    <p style="margin-top:8px;color:#9b6b81">
+      Tap the hearts before they disappear!
+    </p>
+
+    <div class="score">
+      Score: <span id="score">0</span> |
+      Time: <span id="time">20</span>s
+    </div>
+
+    <div id="game"></div>
+
+    <button class="primary" id="gameBtn" onclick="startGame()">
+      Start playing 🎮
+    </button>
+    <p id="gameMessage" style="margin-top:12px;color:#df5594"></p>
+  </div>
+</section>
+
+<footer>
+  <h2 style="font-family:'Pacifico';color:#e95196">
+    Made with love 💗
+  </h2>
+  <p>For Kyler, because ordinary websites are boring.</p>
+  <strong>One girl. One little website. Unlimited love. ♡</strong>
+  <p style="font-size:12px;margin-top:12px">
+    © 2026 | The Kyler Appreciation Department
+  </p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+// GENERAL FUNCTIONS
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+let toastTimer;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2800);
+}
+
+// FLOATING HEARTS
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+
+  const hearts = ["💗","💕","💖","💘","🌸"];
+  heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.bottom = "-30px";
+  heart.style.fontSize = (15+Math.random()*20) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 900);
+
+// LOVE LETTER
+
+function openLetter() {
+  const letter = document.getElementById("loveLetter");
+
+  if (letter.style.display === "block") {
+    letter.style.display = "none";
+  } else {
+    letter.style.display = "block";
+    showToast("A little piece of my heart for you. 💗");
+  }
+}
+
+// QUIZ
+
+const questions = [
+  {
+    q: "Who is the cutest person in this relationship?",
+    a: ["Kyler, obviously 😂","Me, of course","Our future cat","Nobody"],
+    correct: 0
+  },
+  {
+    q: "What should we never run out of?",
+    a: ["Love and laughter","Internet bundles","Food","All of the above"],
+    correct: 3
+  },
+  {
+    q: "What's the best kind of date?",
+    a: ["A boring meeting","Time together","An exam","Doing laundry"],
+    correct: 1
+  },
+  {
+    q: "What happens when Kyler smiles?",
+    a: ["Nothing","My day gets better","The world stops","All of the above"],
+    correct: 3
+  },
+  {
+    q: "What's your final answer about us?",
+    a: ["We're cute","We're very cute","We're ridiculously cute","ALL OF THE ABOVE"],
+    correct: 3
+  }
+];
+
+let currentQuestion = 0;
+let quizScore = 0;
+
+function startQuiz() {
+  currentQuestion = 0;
+  quizScore = 0;
+  document.getElementById("quiz-result").textContent = "";
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+
+  document.getElementById("question-number").textContent =
+    "Question " + (currentQuestion+1) + " of " + questions.length;
+
+  document.getElementById("question").textContent = q.q;
+
+  const options = document.getElementById("options");
+  options.innerHTML = "";
+
+  q.a.forEach((answer,index) => {
+    const button = document.createElement("button");
+    button.textContent = answer;
+    button.onclick = () => answerQuestion(index);
+    options.appendChild(button);
+  });
+}
+
+function answerQuestion(answer) {
+  if (answer === questions[currentQuestion].correct) {
+    quizScore++;
+    showToast("Look at you! Smart and pretty. 😂💕");
+  } else {
+    showToast("Hmmmm... we need to discuss this. 😭");
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.getElementById("question-number").textContent =
+      "Quiz completed!";
+
+    document.getElementById("question").textContent =
+      "You scored " + quizScore + " out of " + questions.length;
+
+    document.getElementById("options").innerHTML =
+      '<button onclick="startQuiz()">Play again 💗</button>';
+
+    document.getElementById("quiz-result").textContent =
+      quizScore >= 4
+      ? "Excellent girlfriend energy! 10/10 in my heart. ❤️"
+      : "You still get unlimited kisses. But revision is needed. 😂💕";
+  }
+}
+
+// HIDDEN MESSAGES
+
+const secrets = [
+  "You are my favourite notification. 📱💕",
+  "I hope you know how beautiful you are. 🥹",
+  "If hugs were currency, you'd be a billionaire. 🤗",
+  "I smile at my phone because of you. 😂",
+  "You're a little piece of happiness in my life. ❤️",
+  "Official reminder: you're ridiculously adorable. 🌷",
+  "I'd choose your company over a thousand boring things. 💗"
+];
+
+let usedSecrets = [];
+
+function revealSecret() {
+  if (usedSecrets.length === secrets.length) {
+    usedSecrets = [];
+  }
+
+  let available = secrets
+    .map((message,index) => index)
+    .filter(index => !usedSecrets.includes(index));
+
+  let chosen = available[Math.floor(Math.random()*available.length)];
+
+  usedSecrets.push(chosen);
+
+  document.getElementById("secret").textContent = secrets[chosen];
+}
+
+// HEART CATCHER GAME
+
+let score = 0;
+let time = 20;
+let gameInterval;
+let heartInterval;
+let playing = false;
+
+function startGame() {
+  if (playing) return;
+
+  score = 0;
+  time = 20;
+  playing = true;
+
+  document.getElementById("score").textContent = score;
+  document.getElementById("time").textContent = time;
+  document.getElementById("gameMessage").textContent = "";
+  document.getElementById("game").innerHTML = "";
+  document.getElementById("gameBtn").textContent = "Game in progress...";
+
+  heartInterval = setInterval(createGameHeart, 650);
+
+  gameInterval = setInterval(() => {
+    time--;
+    document.getElementById("time").textContent = time;
+
+    if (time <= 0) {
+      endGame();
+    }
+  },1000);
+}
+
+function createGameHeart() {
+  if (!playing) return;
+
+  const game = document.getElementById("game");
+  const heart = document.createElement("div");
+
+  heart.className = "game-heart";
+  heart.textContent = ["💗","💖","💕","💘"][
+    Math.floor(Math.random()*4)
+  ];
+
+  heart.style.left = Math.random()*85 + "%";
+  heart.style.top = Math.random()*80 + "%";
+
+  heart.onclick = function() {
+    if (!playing) return;
+
+    score++;
+    document.getElementById("score").textContent = score;
+    heart.remove();
+  };
+
+  game.appendChild(heart);
+
+  setTimeout(() => heart.remove(),1300);
+}
+
+function endGame() {
+  playing = false;
+  clearInterval(gameInterval);
+  clearInterval(heartInterval);
+
+  document.getElementById("game").innerHTML = "";
+  document.getElementById("gameBtn").textContent = "Play again 🎮";
+
+  let message = score >= 15
+    ? "WOW! Professional heart collector! 💗"
+    : score >= 8
+    ? "Not bad, princess! You're pretty good. 💕"
+    : "The hearts were too fast for you. 😂";
+
+  document.getElementById("gameMessage").textContent =
+    "Final score: " + score + ". " + message;
+}
+
+// ORIGINAL BACKGROUND MUSIC
+// Uses Web Audio to create a little melody.
+
+let audioContext = null;
+let musicPlaying = false;
+let melodyTimer = null;
+let noteIndex = 0;
+
+const melody = [
+  523.25,659.25,783.99,659.25,
+  587.33,698.46,783.99,698.46,
+  523.25,659.25,783.99,880,
+  783.99,659.25,587.33,523.25
+];
+
+function playNote(frequency) {
+  if (!audioContext) return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(0.0001,audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.055,audioContext.currentTime+0.03
+  );
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001,audioContext.currentTime+0.35
+  );
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime+0.4);
+}
+
+async function toggleMusic() {
+  const button = document.getElementById("musicBtn");
+
+  if (!audioContext) {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) {
+      showToast("Sorry! Your browser does not support music.");
+      return;
+    }
+
+    audioContext = new AudioContextClass();
+  }
+
+  if (audioContext.state === "suspended") {
+    await audioContext.resume();
+  }
+
+  if (musicPlaying) {
+    clearInterval(melodyTimer);
+    musicPlaying = false;
+    button.textContent = "🎵 Play music";
+  } else {
+    musicPlaying = true;
+    button.textContent = "⏸ Pause music";
+
+    playNote(melody[noteIndex]);
+
+    melodyTimer = setInterval(() => {
+      if (!musicPlaying) return;
+
+      noteIndex = (noteIndex+1)%melody.length;
+      playNote(melody[noteIndex]);
+    },400);
+  }
+}
+
+</script>
+
+</body>
+</html>
