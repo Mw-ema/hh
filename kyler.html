@@ -398,7 +398,9 @@ footer strong {
 }
 </style>
 </head>
-
+<audio id="loveMusic" loop>
+    <source src="music/romantic-song.mp3" type="audio/mpeg">
+</audio>
 <body>
 
 <header>
@@ -880,78 +882,27 @@ function endGame() {
 // ORIGINAL BACKGROUND MUSIC
 // Uses Web Audio to create a little melody.
 
-let audioContext = null;
+// REAL BACKGROUND MUSIC
+
+const loveMusic = document.getElementById("loveMusic");
 let musicPlaying = false;
-let melodyTimer = null;
-let noteIndex = 0;
-
-const melody = [
-  523.25,659.25,783.99,659.25,
-  587.33,698.46,783.99,698.46,
-  523.25,659.25,783.99,880,
-  783.99,659.25,587.33,523.25
-];
-
-function playNote(frequency) {
-  if (!audioContext) return;
-
-  const oscillator = audioContext.createOscillator();
-  const gain = audioContext.createGain();
-
-  oscillator.type = "sine";
-  oscillator.frequency.value = frequency;
-
-  gain.gain.setValueAtTime(0.0001,audioContext.currentTime);
-  gain.gain.exponentialRampToValueAtTime(
-    0.055,audioContext.currentTime+0.03
-  );
-  gain.gain.exponentialRampToValueAtTime(
-    0.0001,audioContext.currentTime+0.35
-  );
-
-  oscillator.connect(gain);
-  gain.connect(audioContext.destination);
-
-  oscillator.start();
-  oscillator.stop(audioContext.currentTime+0.4);
-}
 
 async function toggleMusic() {
-  const button = document.getElementById("musicBtn");
+    const button = document.getElementById("musicBtn");
 
-  if (!audioContext) {
-    const AudioContextClass =
-      window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioContextClass) {
-      showToast("Sorry! Your browser does not support music.");
-      return;
+    if (musicPlaying) {
+        loveMusic.pause();
+        musicPlaying = false;
+        button.textContent = "🎵 Play music";
+    } else {
+        try {
+            await loveMusic.play();
+            musicPlaying = true;
+            button.textContent = "⏸ Pause music";
+        } catch (error) {
+            showToast("Couldn't play music. Check your MP3 file.");
+        }
     }
-
-    audioContext = new AudioContextClass();
-  }
-
-  if (audioContext.state === "suspended") {
-    await audioContext.resume();
-  }
-
-  if (musicPlaying) {
-    clearInterval(melodyTimer);
-    musicPlaying = false;
-    button.textContent = "🎵 Play music";
-  } else {
-    musicPlaying = true;
-    button.textContent = "⏸ Pause music";
-
-    playNote(melody[noteIndex]);
-
-    melodyTimer = setInterval(() => {
-      if (!musicPlaying) return;
-
-      noteIndex = (noteIndex+1)%melody.length;
-      playNote(melody[noteIndex]);
-    },400);
-  }
 }
 
 </script>
